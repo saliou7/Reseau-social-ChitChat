@@ -56,7 +56,7 @@ const LeftSide = () => {
         }).then(() => {
             cookie.removeCookie('jwt')
         }).catch((err) => console.log(err))
-        window.location = '/'
+        window.location = '/login'
     }
 
 

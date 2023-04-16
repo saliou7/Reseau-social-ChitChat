@@ -18,28 +18,30 @@ import Followers from './pages/followers/followers';
 import Following from './pages/followers/followings';
 import { UidContext } from './AppContext';
 import axios from 'axios';
-
+import { useEffect, useState } from 'react';
 
 function App() {
 
     const [uid, setUid] = useState(null);
+    // const [isLogged, setIsLogged] = useState(false);
 
-
-    useEffect(() => { // Fetch token
+    useEffect(() => {
         const fetchToken = async () => {
-            console.log(process.env.REACT_APP_MY_API_URL);
             await axios({
                 method: "get",
-                // url: `${process.env.REACT_APP_MY_API_URL}jwtid`,
-                url: `http://localhost:5000/jwtid`,
-                withCredentials: false, // Send cookie
-            }).then((res) => setUid(res.data) // Set token in state
-            ).catch((err) => console.log("No=token")); // No token
+                url: `${process.env.REACT_APP_API_URL}jwtid`,
+                withCredentials: true,
+            })
+                .then((res) => {
+                    setUid(res.data);
+                })
+                .catch((err) => console.log("No token"));
         };
-        fetchToken(); // Call function
-    }, [uid]); // Empty array to avoid infinite loop
 
+        fetchToken();
 
+    }, [uid]);
+    console.log('uid', uid)
     const Layout = () => {
         return (
             <div className='app'>
@@ -56,11 +58,11 @@ function App() {
     };
 
     const ProtectedRoute = ({ children }) => {
-        if (!uid) {
+        console.log('protec', uid)
+        if (uid === null) {
             return <Navigate to="/login" />;
-        }
-
-        return children;
+        } else
+            return children;
     };
 
     const router = createBrowserRouter([

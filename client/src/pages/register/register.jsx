@@ -34,7 +34,7 @@ const Register = () => {
             await axios({
                 method: "post", //methode de la requete
                 // url: `${process.env.REACT_APP_MY_API_URL}api/user/register`,//url de la requete
-                url: `http://localhost:5000/api/user/register`,//url de la requete
+                url: `${process.env.REACT_APP_API_URL}api/user/register`,//url de la requete
                 data: { //les donnees a envoyer
                     pseudo, //pseudo: pseudo
                     email, //email: email

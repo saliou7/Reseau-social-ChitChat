@@ -1,42 +1,49 @@
-import React, { useState } from 'react';
+import React, { useState, useContext } from 'react';
 import { Link } from "react-router-dom";
 import "./login.scss";
 import axios from "axios";
+import { UidContext } from "../../AppContext";
+
 
 const Login = () => {
 
     const [pseudo, setPseudo] = useState("");
     const [password, setPassword] = useState("");
 
+    const uid = useContext(UidContext);
+    console.log(uid);
+
     const handleLogin = (e) => {
         e.preventDefault();
         const erroruser = document.querySelector(".error-pseudo");
         const errorpassword = document.querySelector(".error-password");
 
-        console.log(process.env.REACT_APP_MY_API_URL);
+        // console.log(process.env.REACT_APP_API_URL);
 
         //faire une requete axios pour verifier si le pseudo et le password sont corrects
         axios({
-            method: "post", //methode de la requete
-            // url: `${process.env.REACT_APP_MY_API_URL}api/user/login`,//url de la requete
-            url: `http://localhost:5000/api/user/login`,//url de la requete
-            data: { //les donnees a envoyer
-                pseudo, //pseudo: pseudo
-                password //password: password
-            }
-        }).then((res) => {  //res = reponse du serveur
+            method: "post",
+            url: `${process.env.REACT_APP_API_URL}api/user/login`,
+            withCredentials: true,
+            data: {
+                pseudo,
+                password,
+            },
+        })
+            .then((res) => {
+                console.log(res);
+                if (res.data.errors) {
+                    erroruser.innerHTML = res.data.errors.pseudo;
+                    errorpassword.innerHTML = res.data.errors.password;
+                } else {
+                    window.location = "/";
+                }
+            })
+            .catch((err) => {
+                console.log(err);
+            });
+    };
 
-            if (res.data.errors) { //si il y a des erreurs
-                erroruser.innerHTML = res.data.errors.pseudo; //afficher le message d'erreur (a changer) 
-                errorpassword.innerHTML = res.data.errors.password; //afficher le message d'erreur (a changer)
-            } else { //si il n'y a pas d'erreurs
-                // window.location = "/"; //rediriger vers la page d'accueil
-                console.log(res.data);
-            }
-        }).catch((err) => { //si il y a une erreur
-            console.log(err); //afficher l'erreur dans la console
-        });
-    }
 
     return (
         <div className="login">
