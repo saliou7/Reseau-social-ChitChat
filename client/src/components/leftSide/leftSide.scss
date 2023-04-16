@@ -1,0 +1,43 @@
+.leftBar {
+    flex: 2;
+    position: sticky;
+    top: 60px;
+    height: calc(100vh - 130px);
+    overflow: scroll;
+    background-color: black;
+    color: white;
+
+    &::-webkit-scrollbar {
+        display: none;
+    }
+
+    display: flex;
+    flex-direction: column;
+
+    padding-top: 70px;
+    align-items: center;
+
+    .top {
+        display: flex;
+        flex-direction: column;
+        gap: 15px;
+        cursor: pointer;
+
+        .icons {
+            display: flex;
+            gap: 20px;
+            align-items: center;
+
+            span {
+                font-size: 18px;
+            }
+        }
+
+        div {
+            &:last-child {
+                padding-top: 40vh;
+            }
+        }
+
+    }
+}

@@ -1,0 +1,13 @@
+.followers {
+    padding: 20px 40px;
+    background-color: #f6f3f3;
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+
+    h1 {
+        text-align: center;
+        font-size: 18px;
+        font-weight: 500;
+    }
+}
