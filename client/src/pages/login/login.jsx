@@ -1,26 +1,18 @@
-import React, { useState, useContext } from 'react';
+import React, { useState } from 'react';
 import { Link } from "react-router-dom";
 import "./login.scss";
 import axios from "axios";
-import { UidContext } from "../../AppContext";
-
 
 const Login = () => {
 
     const [pseudo, setPseudo] = useState("");
     const [password, setPassword] = useState("");
 
-    const uid = useContext(UidContext);
-    console.log(uid);
-
     const handleLogin = (e) => {
         e.preventDefault();
         const erroruser = document.querySelector(".error-pseudo");
         const errorpassword = document.querySelector(".error-password");
 
-        // console.log(process.env.REACT_APP_API_URL);
-
-        //faire une requete axios pour verifier si le pseudo et le password sont corrects
         axios({
             method: "post",
             url: `${process.env.REACT_APP_API_URL}api/user/login`,

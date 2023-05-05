@@ -1,36 +1,61 @@
 import React from 'react';
 import "./allFriends.scss"
-import DeleteIcon from '@mui/icons-material/Delete';
-const AllFriends = () => {
+import { useSelector } from "react-redux";
+
+import FollowHandler from '../add';
+
+const AllFriends = ({ page }) => {
+    const userData = useSelector((state) => state.userReducer);
+    const usersData = useSelector((state) => state.usersReducer);
+
     return (
-
         <div className="item_a">
-            <div className="user">
-                <div className="userInfo">
-                    <img
-                        src="https://images.pexels.com/photos/4881619/pexels-photo-4881619.jpeg?auto=compress&cs=tinysrgb&w=1600"
-                        alt=""
-                    />
-                    <span>Jane Doe</span>
-                </div>
-                <div className="delete">
-                    <DeleteIcon htmlColor='red' />
-                </div>
-            </div>
-            <div className="user">
-                <div className="userInfo">
-                    <img
-                        src="https://images.pexels.com/photos/4881619/pexels-photo-4881619.jpeg?auto=compress&cs=tinysrgb&w=1600"
-                        alt=""
-                    />
-                    <span>Jane Doe</span>
-                </div>
-                <div className="delete">
-                    <DeleteIcon htmlColor='red' />
-                </div>
-
-            </div>
-
+            {Array.isArray(usersData) && page === "Following" &&
+                usersData.map((user) => {
+                    for (let i = 0; i < userData?.following?.length; i++) {
+                        if (user._id === userData.following[i]) {
+                            return (
+                                <div key={user._id} className="user">
+                                    <div className="userInfo">
+                                        <img
+                                            src={user.profile_picture}
+                                            alt=""
+                                        />
+                                        <span>{user.pseudo}</span>
+                                    </div>
+                                    <div className="delete">
+                                        <FollowHandler idToFollow={user._id} />
+                                    </div>
+                                </div>
+                            );
+                        }
+                    }
+                    return null;
+                })
+            }
+            {Array.isArray(usersData) && page === "Followers" &&
+                usersData.map((user) => {
+                    for (let i = 0; i < userData?.followers?.length; i++) {
+                        if (user._id === userData.followers[i]) {
+                            return (
+                                <div key={user._id} className="user">
+                                    <div className="userInfo">
+                                        <img
+                                            src={user.profile_picture}
+                                            alt=""
+                                        />
+                                        <span>{user.pseudo}</span>
+                                    </div>
+                                    <div className="delete">
+                                        <FollowHandler idToFollow={user._id} />
+                                    </div>
+                                </div>
+                            );
+                        }
+                    }
+                    return null;
+                })
+            }
         </div>
     );
 };

@@ -1,105 +1,106 @@
 .register {
-    height: 100vh;
-    background-color: rgb(193, 190, 255);
+  height: 100vh;
+  background-color: rgb(193, 190, 255);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: #bfbfbf;
+
+  .card {
+    width: 60%;
     display: flex;
-    align-items: center;
-    justify-content: center;
+    background-color: white;
+    border-radius: 10px;
+    min-height: 600px;
+    overflow: hidden;
+    flex-direction: row-reverse;
 
-    .card {
-        width: 60%;
-        display: flex;
+    .left {
+      flex: 1;
+      background: linear-gradient(rgba(39, 11, 96, 0.5), rgba(39, 11, 96, 0.5)),
+        url("https://www.pretzellogic.org/wp-content/upload/social-network.jpg")
+          center;
+      background-size: cover;
+      padding: 50px;
+      display: flex;
+      flex-direction: column;
+      gap: 30px;
+      color: white;
+      justify-content: flex-end;
+
+      h1 {
+        font-size: 80px;
+        line-height: 10px;
+      }
+
+      span {
+        font-size: 14px;
+      }
+
+      button {
+        width: 50%;
+        padding: 10px;
+        border: none;
         background-color: white;
-        border-radius: 10px;
-        min-height: 600px;
-        overflow: hidden;
-        flex-direction: row-reverse;
+        color: rebeccapurple;
+        font-weight: bold;
+        cursor: pointer;
+      }
 
-        .left {
-            flex: 1;
-            background: linear-gradient(rgba(39, 11, 96, 0.5), rgba(39, 11, 96, 0.5)),
-                url("https://www.pretzellogic.org/wp-content/upload/social-network.jpg") center;
-            background-size: cover;
-            padding: 50px;
-            display: flex;
-            flex-direction: column;
-            gap: 30px;
-            color: white;
-            justify-content: flex-end;
-
-            h1 {
-                font-size: 80px;
-                line-height: 10px;
-            }
-
-            span {
-                font-size: 14px;
-            }
-
-            button {
-                width: 50%;
-                padding: 10px;
-                border: none;
-                background-color: white;
-                color: rebeccapurple;
-                font-weight: bold;
-                cursor: pointer;
-            }
-
-            img {
-
-                height: 350px;
-                width: 350px;
-            }
-        }
-
-        .right {
-            flex: 1;
-            padding: 50px;
-            display: flex;
-            flex-direction: column;
-            gap: 50px;
-            justify-content: center;
-
-            h1 {
-                color: #555;
-            }
-
-            span {
-                color: green;
-                font-size: 14px;
-                font-weight: 500;
-                margin-top: -30px;
-                margin-bottom: 30px;
-            }
-            form {
-                display: flex;
-                flex-direction: column;
-                gap: 10px;
-
-                input {
-                    border: none;
-                    border-bottom: 1px solid lightgray;
-                    padding: 20px 10px;
-                }
-
-                span {
-                    color: rgba(232, 0, 0, 0.67);
-                    font-size: 12px;
-                    font-weight: 500;
-                    margin-top: -10px;
-                    margin-bottom: 10px;
-                }
-
-                button {
-                    width: 50%;
-                    padding: 10px;
-                    border: none;
-                    background-color: #554fc4;
-                    color: white;
-                    font-weight: bold;
-                    cursor: pointer;
-                }
-            }
-        }
+      img {
+        height: 350px;
+        width: 350px;
+      }
     }
+
+    .right {
+      flex: 1;
+      padding: 50px;
+      display: flex;
+      flex-direction: column;
+      gap: 50px;
+      justify-content: center;
+
+      h1 {
+        color: #555;
+      }
+
+      span {
+        color: green;
+        font-size: 14px;
+        font-weight: 500;
+        margin-top: -30px;
+        margin-bottom: 30px;
+      }
+      form {
+        display: flex;
+        flex-direction: column;
+        gap: 10px;
+
+        input {
+          border: none;
+          border-bottom: 1px solid lightgray;
+          padding: 20px 10px;
+        }
+
+        span {
+          color: rgba(232, 0, 0, 0.67);
+          font-size: 12px;
+          font-weight: 500;
+          margin-top: -10px;
+          margin-bottom: 10px;
+        }
+
+        button {
+          width: 50%;
+          padding: 10px;
+          border: none;
+          background-color: #554fc4;
+          color: white;
+          font-weight: bold;
+          cursor: pointer;
+        }
+      }
+    }
+  }
 }

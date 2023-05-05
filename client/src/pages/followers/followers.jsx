@@ -6,7 +6,7 @@ const Followers = () => {
     return (
         <div className="followers" >
             <h1>All your Followers</h1>
-            <AllFriends />
+            <AllFriends page={"Followers"} />
         </div>
     );
 };

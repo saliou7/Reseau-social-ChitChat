@@ -1,96 +1,104 @@
 .profile {
-    background-color: #f6f3f3;
+  background-color: #f6f3f3;
+  .images {
+    width: 100%;
+    height: 300px;
+    position: relative;
 
-    .images {
-        width: 100%;
-        height: 300px;
-        position: relative;
+    .cover {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
 
-        .cover {
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-
-            border-bottom-right-radius: 15px;
-        }
-
-        .profilePic {
-            width: 200px;
-            height: 200px;
-            border-radius: 50%;
-            object-fit: cover;
-            position: absolute;
-            left: 0;
-            right: 60%;
-            margin: auto;
-            top: 200px;
-        }
+      border-bottom-right-radius: 15px;
+      cursor: pointer;
     }
 
-    .profileContainer {
-        padding: 20px 40px;
-
-        .uInfo {
-            height: 100px;
-            -webkit-box-shadow: 0px 0px 25px -10px rgba(0, 0, 0, 0.38);
-            -moz-box-shadow: 0px 0px 25px -10px rgba(0, 0, 0, 0.38);
-            box-shadow: 0px 0px 25px -10px rgba(0, 0, 0, 0.38);
-            border-radius: 20px;
-            padding: 70px 0 10px 50px;
-            background-color: #ffffff;
-            display: flex;
-            align-items: center;
-            justify-content: space-between;
-            margin-bottom: 20px;
-
-            .left {
-                flex: 1;
-                display: flex;
-                flex-direction: column;
-                gap: 7px;
-
-                span {
-                    font-size: 30px;
-                    font-weight: 500;
-                }
-
-                p {
-                    font-size: 12;
-                    font-size: 500;
-                    cursor: pointer;
-                }
-
-                .info {
-                    display: flex;
-                    align-items: center;
-                    gap: 20px;
-                }
-            }
-
-            .right {
-                flex: 1;
-                display: flex;
-                align-items: center;
-                justify-content: flex-end;
-                gap: 15px;
-                padding-right: 50px;
-
-                .message {
-                    cursor: pointer;
-                }
-
-                button {
-                    background-color: #5271ff;
-                    color: white;
-                    border: none;
-                    padding: 5px;
-                    cursor: pointer;
-                    width: 75px;
-                    border-radius: 20px;
-                    font-weight: 500;
-                }
-            }
-        }
+    .profilePic {
+      cursor: pointer;
+      width: 200px;
+      height: 200px;
+      border-radius: 50%;
+      object-fit: cover;
+      position: absolute;
+      left: 0;
+      right: 60%;
+      margin: auto;
+      top: 200px;
     }
+  }
 
+  .profileContainer {
+    padding: 20px 40px;
+
+    .uInfo {
+      height: 100px;
+      -webkit-box-shadow: 0px 0px 25px -10px rgba(0, 0, 0, 0.38);
+      -moz-box-shadow: 0px 0px 25px -10px rgba(0, 0, 0, 0.38);
+      box-shadow: 0px 0px 25px -10px rgba(0, 0, 0, 0.38);
+      border-radius: 20px;
+      padding: 70px 0 10px 50px;
+      background-color: #ffffff;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      margin-bottom: 20px;
+
+      .left {
+        flex: 1;
+        display: flex;
+        flex-direction: column;
+        gap: 7px;
+
+        span {
+          font-size: 30px;
+          font-weight: 500;
+        }
+
+        p {
+          font-size: 12;
+          font-size: 500;
+          cursor: pointer;
+        }
+
+        .info {
+          display: flex;
+          align-items: center;
+          gap: 20px;
+        }
+      }
+
+      .right {
+        flex: 1;
+        display: flex;
+        align-items: center;
+        justify-content: flex-end;
+        gap: 15px;
+        padding-right: 50px;
+
+        .message {
+          cursor: pointer;
+        }
+
+        button {
+          background-color: #5271ff;
+          color: white;
+          border: none;
+          padding: 5px;
+          cursor: pointer;
+          width: 100px;
+          border-radius: 20px;
+          font-weight: 700;
+          text-align: center;
+          font-size: 13px;
+        }
+        button:disabled {
+          background-color: #b3b3b3;
+          color: white;
+          cursor: not-allowed;
+          pointer-events: all !important;
+        }
+      }
+    }
+  }
 }

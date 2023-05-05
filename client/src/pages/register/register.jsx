@@ -2,8 +2,6 @@ import React, { useState } from 'react';
 import { Link } from "react-router-dom";
 import "./register.scss";
 import { useForm } from "react-hook-form";
-import AutorenewRoundedIcon from '@mui/icons-material/AutorenewRounded';
-import { wait } from '@testing-library/user-event/dist/utils';
 import axios from "axios";
 
 const Register = () => {

@@ -1,43 +1,65 @@
 .leftBar {
-    flex: 2;
-    position: sticky;
-    top: 60px;
-    height: calc(100vh - 130px);
-    overflow: scroll;
-    background-color: black;
-    color: white;
+  flex: 2;
+  position: sticky;
+  top: 60px;
+  height: calc(100vh - 130px);
+  overflow: scroll;
+  background-color: #f6f3f3;
+  // &::-webkit-scrollbar {
+  //   display: none;
+  // }
+  /* Styles pour la scrollbar */
+  &::-webkit-scrollbar {
+    width: 7px;
+  }
 
-    &::-webkit-scrollbar {
-        display: none;
-    }
+  &::-webkit-scrollbar-track {
+    background: #f1f1f1;
+  }
 
+  display: flex;
+  flex-direction: column;
+
+  padding-top: 70px;
+  align-items: center;
+
+  .top {
     display: flex;
     flex-direction: column;
+    gap: 15px;
+    cursor: pointer;
 
-    padding-top: 70px;
-    align-items: center;
+    .icons {
+      display: flex;
 
-    .top {
+      .Link {
         display: flex;
-        flex-direction: column;
-        gap: 15px;
-        cursor: pointer;
+        text-decoration: none;
+        color: inherit;
+        align-items: center;
+        gap: 20px;
+      }
+      .Link:hover {
+        background-color: #becad8;
+        border-radius: 10px;
+        width: 170px;
+        padding: 0px 5px 0px 5px;
+      }
 
-        .icons {
-            display: flex;
-            gap: 20px;
-            align-items: center;
-
-            span {
-                font-size: 18px;
-            }
-        }
-
-        div {
-            &:last-child {
-                padding-top: 40vh;
-            }
-        }
-
+      span {
+        font-size: 18px;
+      }
+      span.active,
+      span.active:hover {
+        font-weight: bold;
+        color: #1a73e8;
+      }
     }
+
+    div {
+      &:last-child {
+        padding-top: 40vh;
+      }
+    }
+  }
 }

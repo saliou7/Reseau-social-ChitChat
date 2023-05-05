@@ -1,76 +1,117 @@
 .post {
+  -webkit-box-shadow: 0px 0px 25px -10px rgba(0, 0, 0, 0.38);
+  -moz-box-shadow: 0px 0px 25px -10px rgba(0, 0, 0, 0.38);
+  box-shadow: 0px 0px 25px -10px rgba(0, 0, 0, 0.38);
+  border-radius: 20px;
+  background-color: white;
 
-    -webkit-box-shadow: 0px 0px 25px -10px rgba(0, 0, 0, 0.38);
-    -moz-box-shadow: 0px 0px 25px -10px rgba(0, 0, 0, 0.38);
-    box-shadow: 0px 0px 25px -10px rgba(0, 0, 0, 0.38);
-    border-radius: 20px;
-    background-color: white;
+  .container {
+    padding: 20px;
 
+    .user {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
 
-    .container {
-        padding: 20px;
+      .userInfo {
+        display: flex;
+        gap: 20px;
 
-        .user {
-            display: flex;
-            align-items: center;
-            justify-content: space-between;
-
-            .userInfo {
-                display: flex;
-                gap: 20px;
-
-                img {
-                    width: 40px;
-                    height: 40px;
-                    border-radius: 50%;
-                    object-fit: cover;
-                }
-
-                .details {
-                    display: flex;
-                    flex-direction: column;
-
-                    .name {
-                        font-weight: 500;
-                    }
-
-                    .date {
-                        font-size: 12px;
-                    }
-                }
-            }
+        img {
+          cursor: pointer;
+          width: 40px;
+          height: 40px;
+          border-radius: 50%;
+          object-fit: cover;
         }
 
-        .content {
-            margin: 20px 0px;
+        .details {
+          display: flex;
+          flex-direction: column;
 
-            img {
-                width: 100%;
-                max-height: 500px;
-                object-fit: cover;
-                margin-top: 20px;
-            }
+          .name {
+            font-weight: 500;
+          }
+
+          .date {
+            font-size: 12px;
+          }
         }
-
-        .info {
-            display: flex;
-            align-items: center;
-            gap: 20px;
-
-            .item {
-                display: flex;
-                align-items: center;
-                gap: 10px;
-                cursor: pointer;
-                font-size: 14px;
-            }
-        }
+      }
     }
 
+    .content {
+      margin: 20px 0px;
+      input {
+        -webkit-box-shadow: 0px 0px 25px -10px rgba(0, 0, 0, 0.38);
+        -moz-box-shadow: 0px 0px 25px -10px rgba(0, 0, 0, 0.38);
+        box-shadow: 0px 0px 25px -10px rgba(0, 0, 0, 0.38);
+        border-radius: 20px;
+        outline: none;
+        padding: 20px 10px;
+        border-radius: 20px;
+        opacity: 0.8;
+        width: 96%;
+        height: 10%;
+      }
+      img {
+        width: 100%;
+        max-height: 450px;
+        object-fit: cover;
+        margin-top: 20px;
+      }
+      button {
+        border: none;
+        background-color: #f0f0f0;
+        padding: 5px 10px;
+        border-radius: 10px;
+        cursor: pointer;
+        margin-top: 10px;
+        margin-left: 80%;
+      }
+    }
+
+    .info {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+
+      .item {
+        display: flex;
+        align-items: center;
+        gap: 5px;
+        cursor: pointer;
+        .Comment {
+          display: flex;
+          align-items: center;
+          gap: 5px;
+          cursor: pointer;
+          padding-left: 20px;
+        }
+        .btn {
+          display: flex;
+          align-items: center;
+          gap: 10px;
+          cursor: pointer;
+          color: #555;
+          font-weight: 500;
+        }
+        span {
+          border: solid 1px rgb(243, 238, 238);
+          border-radius: 15px;
+          padding: 0px 3px;
+        }
+        span:hover {
+          background-color: #555;
+          color: white;
+        }
+      }
+    }
+  }
 }
 
 .posts {
-    display: flex;
-    flex-direction: column;
-    gap: 50px;
+  display: flex;
+  flex-direction: column;
+  gap: 50px;
 }

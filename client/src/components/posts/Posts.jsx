@@ -1,34 +1,45 @@
+import React, { useContext, useEffect, useState } from "react";
+import { useDispatch, useSelector } from "react-redux";
+import { getPosts } from "../../actions/post.actions";
 import Post from "./post"
 import "./post.scss";
+import { isEmpty } from "../Utils";
 
-const Posts = () => {
-    //TEMPORARY
-    const posts = [
-        {
-            id: 1,
-            name: "Joker XZT",
-            userId: 1,
-            profilePic:
-                "https://bestprofilepictures.com/wp-content/uploads/2021/04/Cool-Image.jpg",
-            desc: "Lorem ipsum dolor sit amet consectetur adipisicing elit",
-            img: "https://bestprofilepictures.com/wp-content/uploads/2021/04/Cool-Image.jpg",
-        },
-        {
-            id: 2,
-            name: "Titi riri",
-            userId: 2,
-            profilePic:
-                "https://bestprofilepictures.com/wp-content/uploads/2021/04/Cool-Picture.jpg",
-            desc: "Tenetur iste voluptates dolorem rem commodi voluptate pariatur, voluptatum, laboriosam consequatur enim nostrum cumque! Maiores a nam non adipisci minima modi tempore.",
-            img: "https://bestprofilepictures.com/wp-content/uploads/2021/04/Cool-Picture.jpg",
-        },
-    ];
 
-    return <div className="posts">
-        {posts.map(post => (
-            <Post post={post} key={post.id} />
-        ))}
-    </div>;
+const Posts = ({ page, id }) => {
+
+    const [loadPost, setLoadPost] = useState(true);
+    const [count, setCount] = useState(5);
+    const dispatch = useDispatch();
+    const posts = useSelector((state) => state.postReducer);
+    console.log(posts);
+    const loadMore = () => {
+        if (window.innerHeight + document.documentElement.scrollTop + 1.5 > document.scrollingElement.scrollHeight) {
+            setLoadPost(true);
+        }
+    }
+
+    useEffect(() => {
+        if (loadPost) {
+            dispatch(getPosts(count));
+            setLoadPost(false);
+            setCount(count + 5);
+        }
+
+        window.addEventListener('scroll', loadMore);
+        return () => window.removeEventListener('scroll', loadMore);
+    }, [loadPost, dispatch, count]);
+
+    return (
+        <div className="posts">
+            {!isEmpty(posts[0]) &&
+                posts.map((post) => (
+                    (page === "profile" && post.posterId === id) ? <Post key={post._id} post={post} /> :
+                        (page === "home" && <Post key={post._id} post={post} />)
+                ))
+            }
+        </div>
+    );
 };
 
 export default Posts;

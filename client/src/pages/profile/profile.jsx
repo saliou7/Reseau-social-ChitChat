@@ -1,55 +1,88 @@
 import "./profile.scss";
-import PlaceIcon from "@mui/icons-material/Place";
-import LanguageIcon from "@mui/icons-material/Language";
-import EmailOutlinedIcon from "@mui/icons-material/EmailOutlined";
-import ChatIcon from '@mui/icons-material/Chat';
-import MoreVertIcon from "@mui/icons-material/MoreVert";
+
 import Posts from "../../components/posts/Posts"
 import Share from '../../components/share/share';
 import { Link } from "react-router-dom";
+import { useSelector, useDispatch } from "react-redux";
+import { useState } from "react";
+import { uploadPicture, uploadCover } from "../../actions/user.actions";
+
 const Profile = () => {
+    const userData = useSelector((state) => state.userReducer);
+    const [file, setFile] = useState();
+    const [isCover, setIsCover] = useState(false);
+    const dispatch = useDispatch();
+    const [notUpdate, setNotUpdate] = useState(true);
+
+
+    const handlePicture = () => {
+        const data = new FormData();
+        data.append("name", userData.pseudo);
+        data.append("userId", userData._id);
+        data.append("file", file);
+        if (isCover) {
+            dispatch(uploadCover(data, userData._id));
+        } else {
+            dispatch(uploadPicture(data, userData._id));
+        }
+        setNotUpdate(true);
+    };
+
     return (
         <div className="profile">
             <div className="images">
-                <img
-                    src="https://bestprofilepictures.com/wp-content/uploads/2021/04/Cute-Anime-Image.jpg"
-                    alt=""
-                    className="cover"
-                />
-                <img
-                    src="https://bestprofilepictures.com/wp-content/uploads/2021/08/Amazing-Profile-Picture.jpg"
-                    alt=""
-                    className="profilePic"
-                />
+                <input
+                    type="file" id="cover" name="file"
+                    accept=".jpg, .jpeg, .png"
+                    onChange={(e) => { setFile(e.target.files[0]); setNotUpdate(false); setIsCover(true) }}
+                    style={{ display: "none" }} />
+                <label htmlFor="cover">
+                    <img
+                        src={userData.cover_picture}
+                        alt=""
+                        className="cover"
+                    />
+
+                </label>
+                <input
+                    type="file" id="pp" name="file2"
+                    accept=".jpg, .jpeg, .png"
+                    onChange={(e) => { setFile(e.target.files[0]); setNotUpdate(false); setIsCover(false) }}
+                    style={{ display: "none" }} />
+                <label htmlFor="pp">
+                    <img
+                        src={userData.profile_picture}
+                        alt=""
+                        className="profilePic"
+                    />
+                </label>
+
             </div>
             <div className="profileContainer">
                 <div className="uInfo">
 
                     <div className="left">
-                        <span>Joker Joker</span>
+                        <span>{userData.pseudo}</span>
                         <div className="info">
                             <Link to="/following" style={{ textDecoration: "none", color: "inherit" }}>
-                                <p>following : 0</p>
+                                <p>following : {userData.following?.length}</p>
                             </Link>
                             <Link to="/followers" style={{ textDecoration: "none", color: "inherit" }}>
-                                <p>followers : 5</p>
+                                <p>followers : {userData.followers?.length} </p>
                             </Link>
-
 
                         </div>
 
                     </div>
                     <div className="right">
-
-                        <ChatIcon htmlColor="red" className="message" />
-                        <button>update</button>
+                        <button disabled={notUpdate} onClick={handlePicture}>update</button>
                     </div>
 
                 </div>
                 <Share />
-                <Posts />
+                <Posts page={"profile"} id={userData._id} />
             </div>
-        </div>
+        </div >
     );
 };
 
