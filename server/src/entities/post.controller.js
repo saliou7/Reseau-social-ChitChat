@@ -3,7 +3,6 @@ const UserModel = require("../models/user.model");
 const { uploadErrors } = require("./errors");
 const ObjectID = require("mongoose").Types.ObjectId;
 const multer = require("multer");
-const { promisify } = require("util");
 
 module.exports.getPosts = (req, res) => {
     PostModel.find()
@@ -18,17 +17,15 @@ module.exports.getPosts = (req, res) => {
 };
 
 const date = Date.now()
-
 const storage = multer.diskStorage({
     destination: function (req, file, cb) {
-        cb(null, `${__dirname}/../../client/public/uploads/posts/`)
+        cb(null, `${__dirname}/../../../client/public/uploads/posts/`)
     },
     filename: function (req, file, cb) {
         const uniqueSuffix = req.body.posterId + date + ".jpg";
         cb(null, uniqueSuffix)
     }
 });
-
 const upload = multer({ storage: storage });
 
 module.exports.createPost = function (req, res, next) {
@@ -57,7 +54,7 @@ module.exports.createPost = function (req, res, next) {
 
         const fileName = req.body.posterId + date + ".jpg";
 
-        const newPost = new postModel({
+        const newPost = new PostModel({
             posterId: req.body.posterId,
             message: req.body.message,
             picture: req.file !== undefined ? "./uploads/posts/" + fileName : "",
@@ -203,7 +200,6 @@ module.exports.editCommentPost = async (req, res) => {
         return res.status(500).send(err); // send a 500 error
     }
 };
-
 
 module.exports.deleteCommentPost = async (req, res) => {
 

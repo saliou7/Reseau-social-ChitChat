@@ -1,12 +1,11 @@
 const UserModel = require("../models/user.model");
-const fs = require("fs");
 const { uploadErrors } = require("./errors");
-const multer = require("multer");
 const ObjectID = require("mongoose").Types.ObjectId;
+const multer = require("multer");
 
 const storage = multer.diskStorage({
     destination: function (req, file, cb) {
-        cb(null, `${__dirname}/../../client/public/uploads/profil/`)
+        cb(null, `${__dirname}/../../../client/public/uploads/profil/`)
     },
     filename: function (req, file, cb) {
         const uniqueSuffix = req.body.name + ".jpg";
@@ -40,11 +39,10 @@ module.exports.uploadProfil = async (req, res) => {
         }
 
     });
-
-    const fileName = req.body.name + ".jpg";
     if (!ObjectID.isValid(req.body.userId)) // check if the id is valid
         return res.status(400).send("ID unknown : " + req.body.userId); // if not valid, send a 400 error
 
+    const fileName = req.body.name + ".jpg";
     try {
         const update = await UserModel.findByIdAndUpdate(
             req.body.userId,
@@ -61,9 +59,11 @@ module.exports.uploadProfil = async (req, res) => {
     }
 };
 
+
+
 const storageCover = multer.diskStorage({
     destination: function (req, file, cb) {
-        cb(null, `${__dirname}/../../client/public/uploads/cover/`)
+        cb(null, `${__dirname}/../../../client/public/uploads/cover/`)
     },
     filename: function (req, file, cb) {
         const uniqueSuffix = req.body.name + ".jpg";
@@ -71,9 +71,10 @@ const storageCover = multer.diskStorage({
     }
 });
 
-const uploadCover = multer({ storage: storageCover });
+const UploadCover = multer({ storage: storageCover });
 
 module.exports.uploadCover = async (req, res) => {
+
     if (req.file !== null && req.file !== undefined) {
         try {
             if (
@@ -90,7 +91,7 @@ module.exports.uploadCover = async (req, res) => {
         }
     }
 
-    await uploadCover.single('file')(req, res, function (err) {
+    await UploadCover.single('file')(req, res, function (err) {
         if (err instanceof multer.MulterError) {
             return res.status(400).json({ message: "Une erreur s'est produite lors de l'envoi du fichier." });
         } else if (err) {
@@ -98,7 +99,6 @@ module.exports.uploadCover = async (req, res) => {
         }
 
     });
-
     const fileName = req.body.name + ".jpg";
     if (!ObjectID.isValid(req.body.userId)) // check if the id is valid
         return res.status(400).send("ID unknown : " + req.body.userId); // if not valid, send a 400 error

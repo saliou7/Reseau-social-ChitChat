@@ -3,7 +3,6 @@ const bodyParser = require('body-parser');
 const cookieParser = require('cookie-parser');
 const postRoutes = require('./routes/post.routes');
 const userRoutes = require('./routes/user.routes');
-
 require('dotenv').config();
 require('./api');
 const { checkUser, requireAuth } = require('./entities/auth.middleware');
