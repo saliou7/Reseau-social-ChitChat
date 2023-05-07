@@ -10,7 +10,6 @@ const createToken = (id) => {
 };
 
 module.exports.signUp = async (req, res) => {
-  console.log(req.body); //contient pseudo pseudo password 
   const { pseudo, email, password } = req.body
 
   try {

@@ -27,7 +27,6 @@ const Comments = ({ post }) => {
     };
 
     const handleEdit = () => {
-        // console.log("text" + text);
         if (textEdit) {
             dispatch(editComment(post._id, commentEdit._id, textEdit));
         }
@@ -54,7 +53,6 @@ const Comments = ({ post }) => {
                         <div className="info">
                             <span>{comment.commenterPseudo}</span>
                             <p>{comment.text}</p>
-                            {console.log(comment.text)}
                         </div>
                         {userData._id !== comment.commenterId && <span className="date">{getTimeElapsed(comment.timestamp)}</span>}
                         {userData._id === comment.commenterId && (

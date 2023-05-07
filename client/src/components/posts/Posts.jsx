@@ -1,4 +1,4 @@
-import React, { useContext, useEffect, useState } from "react";
+import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { getPosts } from "../../actions/post.actions";
 import Post from "./post"
@@ -12,7 +12,6 @@ const Posts = ({ page, id }) => {
     const [count, setCount] = useState(5);
     const dispatch = useDispatch();
     const posts = useSelector((state) => state.postReducer);
-    console.log(posts);
     const loadMore = () => {
         if (window.innerHeight + document.documentElement.scrollTop + 1.5 > document.scrollingElement.scrollHeight) {
             setLoadPost(true);

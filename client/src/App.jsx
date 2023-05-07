@@ -39,7 +39,11 @@ function App() {
         };
         fetchToken();
 
-        if (userId) dispatch(getUser(userId));
+        if (userId) {
+            dispatch(getUser(userId))
+            console.log("user : " + userId + " est connecté");
+        } else
+            console.log("aucun user n'est connecté");
     }, [userId, dispatch]);
 
     const Layout = () => {
