@@ -1,0 +1,573 @@
+{
+	"info": {
+		"_postman_id": "2bffbcf0-91f0-4b91-a4db-d347d1aa757a",
+		"name": "ChitChat",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "26790703"
+	},
+	"item": [
+		{
+			"name": "sign up",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"pseudo\" : \"alien\",\r\n    \"email\" : \"alien@gmail.com\",\r\n    \"password\" : \"alien007\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:5000/api/user/register",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "5000",
+					"path": [
+						"api",
+						"user",
+						"register"
+					]
+				},
+				"description": "créer un nouvel utilisateur"
+			},
+			"response": []
+		},
+		{
+			"name": "sign in",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"pseudo\" : \"alien\",\r\n    \"password\" : \"alien007\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:5000/api/user/login",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "5000",
+					"path": [
+						"api",
+						"user",
+						"login"
+					]
+				},
+				"description": "Se connecter"
+			},
+			"response": []
+		},
+		{
+			"name": "create-post",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "formdata",
+					"formdata": [
+						{
+							"key": "posterId",
+							"value": "645521f5e8a27c35e96a1acd",
+							"type": "text"
+						},
+						{
+							"key": "message",
+							"value": "Nous allons bientot vous attaquer les terriens !!!",
+							"type": "text"
+						},
+						{
+							"key": "file",
+							"type": "file",
+							"src": "/D:/mon-app/client/public/uploads/posts/64525a8173c7c1afa605be8b1683119252527.jpg"
+						}
+					]
+				},
+				"url": {
+					"raw": "http://localhost:5000/api/post",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "5000",
+					"path": [
+						"api",
+						"post"
+					]
+				},
+				"description": "créer un post"
+			},
+			"response": []
+		},
+		{
+			"name": "update-post",
+			"request": {
+				"method": "PUT",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"message\": \"Nous allons bientot vous attaquer les terriens !!! j-7\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:5000/api/post/6455285cef5943c22a1895b1",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "5000",
+					"path": [
+						"api",
+						"post",
+						"6455285cef5943c22a1895b1"
+					]
+				},
+				"description": "editer la description d'un post"
+			},
+			"response": []
+		},
+		{
+			"name": "delete-post",
+			"request": {
+				"method": "DELETE",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:5000/api/post/6455285cef5943c22a1895b1",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "5000",
+					"path": [
+						"api",
+						"post",
+						"6455285cef5943c22a1895b1"
+					]
+				},
+				"description": "supprimer un post"
+			},
+			"response": []
+		},
+		{
+			"name": "get-posts",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:5000/api/post",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "5000",
+					"path": [
+						"api",
+						"post"
+					]
+				},
+				"description": "Recuperer tous les posts"
+			},
+			"response": []
+		},
+		{
+			"name": "like-post",
+			"request": {
+				"method": "PATCH",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"id\": \"645521f5e8a27c35e96a1acd\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:5000/api/post/like-post/6455285cef5943c22a1895b1",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "5000",
+					"path": [
+						"api",
+						"post",
+						"like-post",
+						"6455285cef5943c22a1895b1"
+					]
+				},
+				"description": "Liker un post"
+			},
+			"response": []
+		},
+		{
+			"name": "unlike-post",
+			"request": {
+				"method": "PATCH",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"id\": \"645521f5e8a27c35e96a1acd\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:5000/api/post/unlike-post/6455285cef5943c22a1895b1",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "5000",
+					"path": [
+						"api",
+						"post",
+						"unlike-post",
+						"6455285cef5943c22a1895b1"
+					]
+				},
+				"description": "Retire un like d'un post"
+			},
+			"response": []
+		},
+		{
+			"name": "comment-post",
+			"request": {
+				"method": "PATCH",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"commentId\": \"64552aa0ef5943c22a1895f5\",\r\n    \"text\" : \"vous êtes prevenu !! j-5\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:5000/api/post/edit-comment-post/6455285cef5943c22a1895b1",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "5000",
+					"path": [
+						"api",
+						"post",
+						"edit-comment-post",
+						"6455285cef5943c22a1895b1"
+					]
+				},
+				"description": "ajouter un nouveau commentaire"
+			},
+			"response": []
+		},
+		{
+			"name": "delete-comment",
+			"request": {
+				"method": "PATCH",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"commentId\": \"64552bbbef5943c22a189614\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:5000/api/post/delete-comment-post/6455285cef5943c22a1895b1",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "5000",
+					"path": [
+						"api",
+						"post",
+						"delete-comment-post",
+						"6455285cef5943c22a1895b1"
+					]
+				},
+				"description": "supprimer un commentaire d'un post"
+			},
+			"response": []
+		},
+		{
+			"name": "edit-comment",
+			"request": {
+				"method": "PATCH",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"commenterId\": \"645521f5e8a27c35e96a1acd\",\r\n    \"commenterPseudo\" : \"alien\",\r\n    \"text\" : \"vous êtes prevenu\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:5000/api/post/comment-post/6455285cef5943c22a1895b1",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "5000",
+					"path": [
+						"api",
+						"post",
+						"comment-post",
+						"6455285cef5943c22a1895b1"
+					]
+				},
+				"description": "editier le commentaire d'un post"
+			},
+			"response": []
+		},
+		{
+			"name": "logout",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:5000/api/user/logout",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "5000",
+					"path": [
+						"api",
+						"user",
+						"logout"
+					]
+				},
+				"description": "se deconnecter"
+			},
+			"response": []
+		},
+		{
+			"name": "get-All-Users",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:5000/api/user/",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "5000",
+					"path": [
+						"api",
+						"user",
+						""
+					]
+				},
+				"description": "Recuperer tous les utilisateurs"
+			},
+			"response": []
+		},
+		{
+			"name": "get-user",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:5000/api/user/645521f5e8a27c35e96a1acd",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "5000",
+					"path": [
+						"api",
+						"user",
+						"645521f5e8a27c35e96a1acd"
+					]
+				},
+				"description": "recuperer un utilisateur"
+			},
+			"response": []
+		},
+		{
+			"name": "delete-user",
+			"request": {
+				"method": "DELETE",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:5000/api/user/645521f5e8a27c35e96a1acd",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "5000",
+					"path": [
+						"api",
+						"user",
+						"645521f5e8a27c35e96a1acd"
+					]
+				},
+				"description": "Supprimer un utilisateur"
+			},
+			"response": []
+		},
+		{
+			"name": "follow",
+			"request": {
+				"method": "PATCH",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"idToFollow\" : \"64413920a923acba4451d093\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:5000/api/user/follow/64550dd411396dd8efc305be",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "5000",
+					"path": [
+						"api",
+						"user",
+						"follow",
+						"64550dd411396dd8efc305be"
+					]
+				},
+				"description": "suivre un utilisateur"
+			},
+			"response": []
+		},
+		{
+			"name": "un-follow",
+			"request": {
+				"method": "PATCH",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"idToUnfollow\" : \"64413920a923acba4451d093\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:5000/api/user/unfollow/64550dd411396dd8efc305be",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "5000",
+					"path": [
+						"api",
+						"user",
+						"unfollow",
+						"64550dd411396dd8efc305be"
+					]
+				},
+				"description": "ne plus suivre un utilisateur"
+			},
+			"response": []
+		},
+		{
+			"name": "upload-profile-picture",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "formdata",
+					"formdata": [
+						{
+							"key": "userId",
+							"value": "645521f5e8a27c35e96a1acd",
+							"type": "text"
+						},
+						{
+							"key": "file",
+							"type": "file",
+							"src": "/C:/Users/BARRY/Downloads/unnamed.jpg"
+						}
+					]
+				},
+				"url": {
+					"raw": "http://localhost:5000/api/user/upload",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "5000",
+					"path": [
+						"api",
+						"user",
+						"upload"
+					]
+				},
+				"description": "ajouter une photo de profile"
+			},
+			"response": []
+		},
+		{
+			"name": "upload-cover-picture",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "formdata",
+					"formdata": [
+						{
+							"key": "userId",
+							"value": "645521f5e8a27c35e96a1acd",
+							"type": "text"
+						},
+						{
+							"key": "file",
+							"type": "file",
+							"src": "/C:/Users/BARRY/Downloads/unnamed.jpg"
+						}
+					]
+				},
+				"url": {
+					"raw": "http://localhost:5000/api/user/cover",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "5000",
+					"path": [
+						"api",
+						"user",
+						"cover"
+					]
+				},
+				"description": "ajouter une photo de couverture"
+			},
+			"response": []
+		}
+	]
+}
