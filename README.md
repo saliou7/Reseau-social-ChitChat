@@ -9,10 +9,6 @@
 - Routing done using [React Router](https://reacttraining.com/react-router/web/guides/philosophy)
 - State management via [Redux](https://redux.js.org/)
 
-### Architecture diagrams
-
-
-
 ## Setup
 
 1. Clone the repository and install the dependencies
