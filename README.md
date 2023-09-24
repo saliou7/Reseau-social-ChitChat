@@ -23,8 +23,6 @@ yarn install
 ```bash
 yarn start
 ```
-3. ... \[add other steps here\]
-
 ## Available commands
 
 * `yarn start`: Start the app locally in your development environment, by default it will be in http://localhost:3000
